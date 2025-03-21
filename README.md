@@ -1,6 +1,6 @@
 # 🏆 NFT Royalties Mastery
 
-ERC721 practice repository featuring a smart contract that creates unique NFTs integrating IERC2981 royalties The NFTs can be visualized on OpenSea and in your MetaMask wallet.
+ERC721 practice repository featuring a smart contract that creates unique NFTs integrating IERC2981 royalties. The NFTs can be visualized on OpenSea and in your MetaMask wallet.
 
 ![NFT Royalties Mastery](./public/openaseaNft.png)
 
