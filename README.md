@@ -1,66 +1,37 @@
-## Foundry
+# 🏆 NFT Royalties Mastery
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+ERC721 practice repository hosting a smart contract that creates unique NFTs, which can be visualized on OpenSea and in your MetaMask wallet.
 
-Foundry consists of:
+---
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## 🔍 Check NFT Collection
 
-## Documentation
+- **Arbiscan:** [View and interact with the contract](https://sepolia.arbiscan.io/address/0xA4b3f7783E1a48A5D06df273Ba00D7F6D40B0291) on Arbiscan.
+- **OpenSea:** [Browse the NFT collection](https://testnets.opensea.io/collection/nft-royalty-master) on OpenSea.
+- **MetaMask:** Add the contract address to your MetaMask wallet to view your NFTs.
 
-https://book.getfoundry.sh/
+---
 
-## Usage
+## ✨ Key Features
 
-### Build
+| **Feature**       | **Description**                                                                                        |
+| ----------------- | ------------------------------------------------------------------------------------------------------ |
+| Unique NFTs       | Each NFT in the "NFT Mastery" collection has unique metadata and an associated image.                  |
+| IPFS Integration  | Images and JSON metadata are stored on IPFS using Pinata, ensuring decentralized and reliable storage. |
+| Fast Transactions | Deployed on the Arbitrum network, enabling quick and low-cost transactions.                            |
+| Verified Contract | The smart contract is verified on Arbitrum, ensuring transparency and security.                        |
+| Easy Interaction  | Interact with the contract directly via Foundry or through Arbiscan.                                   |
 
-```shell
-$ forge build
-```
+---
 
-### Test
+## 📊 Contracts Overview
 
-```shell
-$ forge test
-```
+### `firstNft.sol`
 
-### Format
+This ERC721 NFT contract defines the core functionality of the NFT Mastery collection.
 
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+| **Function**                              | **Description**                                                                           |
+|-------------------------------------------|--------------------------------------------------------------------------------------------|
+| `constructor(string memory _name, string memory _symbol, string memory _baseUri)` | Deploys the NFT collection with a specified name, symbol, and base URI for metadata storage. |
+| `mint(address _to, uint256 _tokenId)`     | Allows the contract owner to mint new NFTs and assign them to a specified address.           |                     |
+| `tokenURI(uint256 _tokenId)`              | Returns the metadata URI for a given token ID by appending it to the base URI.                |

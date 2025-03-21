@@ -11,7 +11,7 @@ contract NftRoyalties is ERC721, IERC2981 {
 
     uint256 public currentTokenId;
     string public baseUri;
-    uint256 public totalSupply = 3;
+    uint256 public totalSupply = 2;
     uint256 public mintPrice = 0.0001 ether;
     uint96 public royaltyFraction = 500; // 5%
     address private royaltyRecipient;
