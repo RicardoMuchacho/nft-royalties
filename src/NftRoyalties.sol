@@ -18,10 +18,11 @@ contract NftRoyalties is ERC721, IERC2981 {
 
     event mintNFT(address account_, uint256 tokenId);
 
-    modifier onlyRoyaltyRecipient(){
+    modifier onlyRoyaltyRecipient() {
         require(msg.sender == royaltyRecipient, "Access Unauthorized");
         _;
     }
+
     constructor(string memory name_, string memory symbol_, string memory _baseUri) ERC721(name_, symbol_) {
         baseUri = _baseUri;
         royaltyRecipient = msg.sender;
@@ -39,8 +40,8 @@ contract NftRoyalties is ERC721, IERC2981 {
         currentTokenId++;
 
         if (returnEth > 0) {
-          (bool success , ) = msg.sender.call{value: returnEth}("");
-          if(!success) revert();
+            (bool success,) = msg.sender.call{value: returnEth}("");
+            if (!success) revert();
         }
 
         emit mintNFT(msg.sender, tokenIdMinted);
@@ -58,26 +59,23 @@ contract NftRoyalties is ERC721, IERC2981 {
     }
 
     // royaltyInfo EIP-2981
-    function royaltyInfo(
-        uint256 ,
-        uint256 salePrice
-    ) external view override returns (address receiver_, uint256 royaltyAmount_) {
+    function royaltyInfo(uint256, uint256 salePrice)
+        external
+        view
+        override
+        returns (address receiver_, uint256 royaltyAmount_)
+    {
         receiver_ = royaltyRecipient;
         royaltyAmount_ = (salePrice * royaltyFraction) / 10000;
     }
 
     // Required override for ERC165 support
-    function supportsInterface(bytes4 interfaceId) 
-        public 
-        view 
-        override(ERC721, IERC165) 
-        returns (bool) 
-    {
+    function supportsInterface(bytes4 interfaceId) public view override(ERC721, IERC165) returns (bool) {
         return interfaceId == type(IERC2981).interfaceId || super.supportsInterface(interfaceId);
     }
 
     function withdrawEth() external onlyRoyaltyRecipient {
-       (bool success ,) = royaltyRecipient.call{value: address(this).balance}("");
-       if(!success) revert();
+        (bool success,) = royaltyRecipient.call{value: address(this).balance}("");
+        if (!success) revert();
     }
 }
